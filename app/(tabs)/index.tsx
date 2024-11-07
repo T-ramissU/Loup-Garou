@@ -8,8 +8,11 @@ import {
 import React from "react";
 import { customStyles } from "@/constants/DefaultStyles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useRouter } from "expo-router";
 
 const index = () => {
+  const router = useRouter();
+
   return (
     <ImageBackground
       style={styles.container}
@@ -24,7 +27,12 @@ const index = () => {
             size={30}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={customStyles.button}>
+        <TouchableOpacity
+          style={customStyles.button}
+          onPress={() => {
+            router.push("/(tabs)/cards");
+          }}
+        >
           <Text style={customStyles.buttonText}>Cards</Text>
           <MaterialCommunityIcons
             name="cards-outline"

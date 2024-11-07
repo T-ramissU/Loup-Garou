@@ -130,7 +130,7 @@ export default theme;
 
 export const customStyles = StyleSheet.create({
   button: {
-    backgroundColor: theme.color.prim80, // Primary tint color
+    backgroundColor: theme.color.prim60, // Primary tint color
     borderRadius: theme.borderRadius.sz2, // Adjust based on the `sizes` object
     paddingVertical: theme.spacing.sz2,
     paddingHorizontal: theme.spacing.sz3,
@@ -164,7 +164,7 @@ export const customStyles = StyleSheet.create({
     fontFamily: theme.fontFamily.header,
     fontSize: theme.fontSize.xl,
     fontWeight: "600", // Semi-bold
-    color: theme.color.prim80,
+    color: theme.color.prim20,
   },
   H3: {
     fontFamily: theme.fontFamily.header,
@@ -193,5 +193,10 @@ export const customStyles = StyleSheet.create({
   },
   ButtonIcon: {
     color: theme.color.prim10,
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
