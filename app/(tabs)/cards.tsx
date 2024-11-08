@@ -1,20 +1,42 @@
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  ImageBackground,
+  ListRenderItem,
+  StyleSheet,
+  View,
+} from "react-native";
 import React from "react";
 import { customStyles } from "@/constants/DefaultStyles";
 import RoleCard from "@/components/RoleCard";
-import { ScrollView } from "react-native-gesture-handler";
+import allCards from "@/assets/cards/origin.json";
+import { Role } from "@/interfaces/RoleInterface";
 
 const cards = () => {
+  const allRoles: Role[] = allCards;
+
+  const renderItem: ListRenderItem<Role> = ({ item }) => (
+    <View style={styles.itemView}>
+      <RoleCard roleData={item} />
+    </View>
+  );
   return (
     <ImageBackground
       style={customStyles.container}
       source={require("@/assets/images/backgroundImage.jpg")}
     >
-      <RoleCard />
+      <FlatList
+        data={allRoles}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+      ></FlatList>
     </ImageBackground>
   );
 };
 
 export default cards;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  itemView: {
+    marginVertical: 15,
+  },
+});

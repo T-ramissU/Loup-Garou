@@ -1,50 +1,58 @@
 [
   {
     "Name": "Chasseur",
-    "Image": "@/assets/images/cards/Chasseur.png",
+    "Image": "Chasseur.png",
     "Description": "Le Chasseur a le pouvoir de tuer un joueur au moment de sa mort. S'il est éliminé, il peut choisir un autre joueur à éliminer avec lui.",
+    "Side": "V",
     "Victory": "Les Villageois gagnent si tous les Loups-garous sont éliminés."
   },
   {
     "Name": "Cupidon",
-    "Image": "@/assets/images/cards/Cupidon.png",
+    "Image": "Cupidon.png",
     "Description": "Cupidon a le pouvoir de désigner deux amoureux au début de la partie. Si l'un des amoureux meurt, l'autre se suicidera de chagrin.",
+    "Side": "V",
     "Victory": "Les Villageois gagnent si tous les Loups-garous sont éliminés, sauf si Cupidon est amoureux d'un Loup-garou, dans ce cas, ils gagnent ensemble."
   },
   {
     "Name": "Loup-garou",
-    "Image": "@/assets/images/cards/Loup-garou.png",
+    "Image": "Loup-garou.png",
     "Description": "Les Loups-garous se réveillent chaque nuit pour dévorer un joueur. Leur but est de tuer tous les Villageois.",
+    "Side": "L",
     "Victory": "Les Loups-garous gagnent si le nombre de Loups-garous est égal ou supérieur au nombre de Villageois."
   },
   {
     "Name": "Petite fille",
-    "Image": "@/assets/images/cards/Petite_fille.png",
+    "Image": "Petite_fille.png",
     "Description": "La Petite Fille peut espionner les Loups-garous durant la nuit en ouvrant discrètement les yeux. Elle doit faire attention à ne pas se faire repérer.",
+    "Side": "V",
     "Victory": "Les Villageois gagnent si tous les Loups-garous sont éliminés."
   },
   {
     "Name": "Sorcière",
-    "Image": "@/assets/images/cards/Sorciere.png",
+    "Image": "Sorciere.png",
     "Description": "La Sorcière possède deux potions : une pour sauver la victime des Loups-garous et une pour tuer un joueur de son choix. Chaque potion ne peut être utilisée qu'une seule fois.",
+    "Side": "V",
     "Victory": "Les Villageois gagnent si tous les Loups-garous sont éliminés."
   },
   {
     "Name": "Villageois",
-    "Image": "@/assets/images/cards/Villageois.png",
+    "Image": "Villageois.png",
     "Description": "Les Villageois n'ont aucun pouvoir spécial. Leur objectif est de découvrir qui sont les Loups-garous et de les éliminer lors des votes.",
+    "Side": "V",
     "Victory": "Les Villageois gagnent si tous les Loups-garous sont éliminés."
   },
   {
     "Name": "Voleur",
-    "Image": "@/assets/images/cards/Voleur.png",
+    "Image": "Voleur.png",
     "Description": "Le Voleur peut choisir une carte parmi deux cartes supplémentaires au début de la partie. Il peut devenir un rôle spécial ou un Loup-garou, selon les cartes disponibles.",
+    "Side": "V",
     "Victory": "Selon le rôle qu'il choisit, le Voleur gagne avec l'équipe des Villageois ou celle des Loups-garous."
   },
   {
     "Name": "Voyante",
-    "Image": "@/assets/images/cards/Voyante.png",
+    "Image": "Voyante.png",
     "Description": "La Voyante peut, chaque nuit, regarder la carte d'un joueur pour essayer de découvrir les Loups-garous.",
+    "Side": "V",
     "Victory": "Les Villageois gagnent si tous les Loups-garous sont éliminés."
   }
 ]

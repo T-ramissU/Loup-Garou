@@ -5,6 +5,7 @@ import {
   StatusBar,
   StyleSheet,
 } from "react-native";
+import { green } from "react-native-reanimated/lib/typescript/reanimated2/Colors";
 
 const sizes = {
   sz1: 4,
@@ -115,6 +116,9 @@ const theme = {
     second60: "#74C1BF",
     second80: "#479FA2",
     second100: "#2B7E80",
+
+    red: "#FF0000",
+    green: "#00FF00",
 
     blurry: "rgba(0, 0, 0, 0.6)",
   },

@@ -3,4 +3,5 @@ export interface Role {
   Image: string;
   Description: string;
   Victory: string;
+  Side: string;
 }
