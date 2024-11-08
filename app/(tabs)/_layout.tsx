@@ -19,10 +19,18 @@ export default function TabLayout() {
         name="cards"
         options={{
           headerShown: true,
-          headerTitle: "Cards",
+          headerTitle: "Cartes",
           headerStyle: { backgroundColor: theme.color.dark100 },
         }}
-      ></Stack.Screen>
+      />
+      <Stack.Screen
+        name="rules"
+        options={{
+          headerShown: true,
+          headerTitle: "Règles",
+          headerStyle: { backgroundColor: theme.color.dark100 },
+        }}
+      />
     </Stack>
   );
 }

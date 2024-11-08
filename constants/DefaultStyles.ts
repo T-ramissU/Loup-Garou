@@ -5,7 +5,6 @@ import {
   StatusBar,
   StyleSheet,
 } from "react-native";
-import { green } from "react-native-reanimated/lib/typescript/reanimated2/Colors";
 
 const sizes = {
   sz1: 4,
@@ -44,7 +43,7 @@ const theme = {
     xxl: 32,
   },
   fontFamily: {
-    header: "Cizel", // Use Cizel for headers, titles, or decorative text
+    header: "Cinzel", // Use Cizel for headers, titles, or decorative text
     body: "IMFellDWPica", // Use IMFellDWPica for body text or general content
   },
   os: Platform.OS,
@@ -161,8 +160,8 @@ export const customStyles = StyleSheet.create({
   H1: {
     fontFamily: theme.fontFamily.header,
     fontSize: theme.fontSize.xxl,
-    fontWeight: "bold", // Boldest for H1
-    color: theme.color.prim100,
+    fontWeight: "600", // Boldest for H1
+    color: theme.color.prim20,
   },
   H2: {
     fontFamily: theme.fontFamily.header,
@@ -180,13 +179,13 @@ export const customStyles = StyleSheet.create({
   P1: {
     fontFamily: theme.fontFamily.body,
     fontSize: theme.fontSize.md,
-    fontWeight: "700", // Boldest for P1
-    color: theme.color.grey100,
+    fontWeight: "600", // Boldest for P1
+    color: theme.color.grey60,
   },
   P2: {
     fontFamily: theme.fontFamily.body,
     fontSize: theme.fontSize.sm,
-    // fontWeight: "400", // Normal weight for P2
+    fontWeight: "400", // Normal weight for P2
     color: theme.color.grey80,
   },
   P3: {

@@ -20,7 +20,7 @@ const index = () => {
     >
       <View style={styles.view}>
         <TouchableOpacity style={customStyles.button}>
-          <Text style={customStyles.buttonText}>Play</Text>
+          <Text style={customStyles.buttonText}>Jouer</Text>
           <MaterialCommunityIcons
             name="play-outline"
             style={customStyles.ButtonIcon}
@@ -33,15 +33,20 @@ const index = () => {
             router.push("/(tabs)/cards");
           }}
         >
-          <Text style={customStyles.buttonText}>Cards</Text>
+          <Text style={customStyles.buttonText}>Cartes</Text>
           <MaterialCommunityIcons
             name="cards-outline"
             style={customStyles.ButtonIcon}
             size={30}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={customStyles.button}>
-          <Text style={customStyles.buttonText}>Rules</Text>
+        <TouchableOpacity
+          style={customStyles.button}
+          onPress={() => {
+            router.push("/(tabs)/rules");
+          }}
+        >
+          <Text style={customStyles.buttonText}>Règles</Text>
           <MaterialCommunityIcons
             name="format-list-text"
             style={customStyles.ButtonIcon}

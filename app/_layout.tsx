@@ -18,7 +18,7 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   const [loaded] = useFonts({
-    Cizel: require("../assets/fonts/Cinzel-VariableFont_wght.ttf"), // Adjust path as needed
+    Cinzel: require("../assets/fonts/Cinzel-VariableFont_wght.ttf"), // Adjust path as needed
     IMFellDWPica: require("../assets/fonts/IMFellDWPica-Regular.ttf"), // Adjust path as needed
   });
 
