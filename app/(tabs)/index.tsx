@@ -14,47 +14,54 @@ const index = () => {
   const router = useRouter();
 
   return (
-    <ImageBackground
-      style={styles.container}
-      source={require("@/assets/images/backgroundImage.jpg")}
-    >
-      <View style={styles.view}>
-        <TouchableOpacity style={customStyles.button}>
-          <Text style={customStyles.buttonText}>Jouer</Text>
-          <MaterialCommunityIcons
-            name="play-outline"
-            style={customStyles.ButtonIcon}
-            size={30}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={customStyles.button}
-          onPress={() => {
-            router.push("/(tabs)/cards");
-          }}
-        >
-          <Text style={customStyles.buttonText}>Cartes</Text>
-          <MaterialCommunityIcons
-            name="cards-outline"
-            style={customStyles.ButtonIcon}
-            size={30}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={customStyles.button}
-          onPress={() => {
-            router.push("/(tabs)/rules");
-          }}
-        >
-          <Text style={customStyles.buttonText}>Règles</Text>
-          <MaterialCommunityIcons
-            name="format-list-text"
-            style={customStyles.ButtonIcon}
-            size={30}
-          />
-        </TouchableOpacity>
-      </View>
-    </ImageBackground>
+    <View style={customStyles.container}>
+      <ImageBackground
+        style={customStyles.imageBgContainer}
+        source={require("@/assets/images/backgroundImage.jpg")}
+      >
+        <View style={styles.view}>
+          <TouchableOpacity
+            style={customStyles.button}
+            onPress={() => {
+              router.push("/(game)/");
+            }}
+          >
+            <Text style={customStyles.buttonText}>Jouer</Text>
+            <MaterialCommunityIcons
+              name="play-outline"
+              style={customStyles.ButtonIcon}
+              size={30}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={customStyles.button}
+            onPress={() => {
+              router.push("/(tabs)/cards");
+            }}
+          >
+            <Text style={customStyles.buttonText}>Cartes</Text>
+            <MaterialCommunityIcons
+              name="cards-outline"
+              style={customStyles.ButtonIcon}
+              size={30}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={customStyles.button}
+            onPress={() => {
+              router.push("/(tabs)/rules");
+            }}
+          >
+            <Text style={customStyles.buttonText}>Règles</Text>
+            <MaterialCommunityIcons
+              name="format-list-text"
+              style={customStyles.ButtonIcon}
+              size={30}
+            />
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
+    </View>
   );
 };
 

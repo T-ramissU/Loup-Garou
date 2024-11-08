@@ -200,6 +200,10 @@ export const customStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+  },
+  imageBgContainer: {
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
   },
 });

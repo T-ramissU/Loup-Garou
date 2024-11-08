@@ -20,16 +20,18 @@ const cards = () => {
     </View>
   );
   return (
-    <ImageBackground
-      style={customStyles.container}
-      source={require("@/assets/images/backgroundImage.jpg")}
-    >
-      <FlatList
-        data={allRoles}
-        renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
-      ></FlatList>
-    </ImageBackground>
+    <View style={customStyles.container}>
+      <ImageBackground
+        style={customStyles.imageBgContainer}
+        source={require("@/assets/images/backgroundImage.jpg")}
+      >
+        <FlatList
+          data={allRoles}
+          renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
+        ></FlatList>
+      </ImageBackground>
+    </View>
   );
 };
 
