@@ -21,7 +21,7 @@ const index = () => {
       >
         <View style={styles.view}>
           <TouchableOpacity
-            style={customStyles.button}
+            style={[customStyles.button, customStyles.buttonSizeL]}
             onPress={() => {
               router.push("/(game)/");
             }}
@@ -34,7 +34,7 @@ const index = () => {
             />
           </TouchableOpacity>
           <TouchableOpacity
-            style={customStyles.button}
+            style={[customStyles.button, customStyles.buttonSizeL]}
             onPress={() => {
               router.push("/(tabs)/cards");
             }}
@@ -47,7 +47,7 @@ const index = () => {
             />
           </TouchableOpacity>
           <TouchableOpacity
-            style={customStyles.button}
+            style={[customStyles.button, customStyles.buttonSizeL]}
             onPress={() => {
               router.push("/(tabs)/rules");
             }}

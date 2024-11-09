@@ -1,5 +1,13 @@
 export interface Role {
-  Name: string;
+  Name:
+    | "Villageois"
+    | "Cupidon"
+    | "Loup-garou"
+    | "Sorcière"
+    | "Chasseur"
+    | "Voyante"
+    | "Petite fille"
+    | "Voleur";
   Image: string;
   Description: string;
   Victory: string;

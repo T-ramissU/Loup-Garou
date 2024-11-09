@@ -116,6 +116,8 @@ const theme = {
     second80: "#479FA2",
     second100: "#2B7E80",
 
+    borderColor: "#6A413D", // Warm, muted brown-red for subtle but cohesive borders
+
     red: "#FF0000",
     green: "#00FF00",
 
@@ -139,8 +141,7 @@ export const customStyles = StyleSheet.create({
     paddingHorizontal: theme.spacing.sz3,
     justifyContent: "center",
     alignItems: "center",
-    width: 300,
-    height: 70,
+
     flexDirection: "row",
     gap: 15,
     shadowColor: theme.buttonShadow.shadowColor,
@@ -148,6 +149,18 @@ export const customStyles = StyleSheet.create({
     shadowOpacity: theme.buttonShadow.shadowOpacity,
     shadowRadius: theme.buttonShadow.shadowRadius,
     elevation: 6,
+  },
+  buttonSizeL: {
+    width: 300,
+    height: 70,
+  },
+  buttonSizeM: {
+    width: 200,
+    height: 50,
+  },
+  buttonSizeS: {
+    width: 100,
+    height: 50,
   },
   buttonText: {
     fontFamily: theme.fontFamily.header, // Paragraph font
@@ -205,5 +218,23 @@ export const customStyles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  input: {
+    backgroundColor: theme.color.grey40, // Soft warm grey as a background
+    borderColor: theme.color.borderColor, // Matches your theme’s border color
+    borderWidth: 1,
+    borderRadius: theme.borderRadius.sz2,
+    paddingVertical: theme.spacing.sz2,
+    paddingHorizontal: theme.spacing.sz3,
+    fontFamily: theme.fontFamily.body,
+    fontSize: theme.fontSize.md,
+    color: theme.color.grey160, // Dark warm grey for text on a light background
+    width: 200,
+  },
+  inputFocused: {
+    borderColor: theme.color.prim80, // Reddish tone for focus border
+  },
+  inputPlaceholder: {
+    color: theme.color.grey80, // Medium grey for placeholder text
   },
 });

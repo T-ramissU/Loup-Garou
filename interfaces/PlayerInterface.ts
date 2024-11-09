@@ -6,4 +6,7 @@ export interface Player {
   IsAive: boolean;
   HasPlayed: boolean;
   id: number;
+  Couple?: number;
+  DeathPotion?: boolean;
+  LifePotion?: boolean;
 }

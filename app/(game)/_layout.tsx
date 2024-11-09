@@ -17,10 +17,16 @@ export default function TabLayout() {
       <Stack.Screen
         options={{
           headerShown: true,
-          headerTransparent: true,
-          headerTitle: "",
+          headerTitle: "Joueurs",
         }}
         name="index"
+      />
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          headerTitle: "Roles",
+        }}
+        name="roles/index"
       />
     </Stack>
   );
