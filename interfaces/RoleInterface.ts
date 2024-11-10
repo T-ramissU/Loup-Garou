@@ -1,5 +1,6 @@
 export interface Role {
   Name:
+    | string
     | "Villageois"
     | "Cupidon"
     | "Loup-garou"
@@ -12,4 +13,6 @@ export interface Role {
   Description: string;
   Victory: string;
   Side: string;
+  Number: number;
+  Priority: number;
 }

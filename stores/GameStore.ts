@@ -1,5 +1,7 @@
 import { Player } from "@/interfaces/PlayerInterface";
+import { Role } from "@/interfaces/RoleInterface";
 import { create } from "zustand";
+import allCards from "@/assets/cards/origin.json";
 
 type State = {
   players: Player[];
@@ -7,6 +9,7 @@ type State = {
     phase: "setup" | "night" | "day" | "voting" | "gameOver";
     round: number;
   };
+  cards: Role[];
   winners: Player[];
   losers: Player[];
 };
@@ -18,6 +21,8 @@ type Action = {
   makeCouple: (idPlayer1: number, idPlayer2: number) => void;
   killPlayer: (id: number) => void;
   revivePlayer: (id: number) => void;
+  addCard: (name: string) => void;
+  removeCard: (name: string) => void;
 };
 
 export const useGameStore = create<State & Action>((set) => ({
@@ -34,6 +39,7 @@ export const useGameStore = create<State & Action>((set) => ({
   winners: [],
   losers: [],
 
+  cards: allCards as Role[],
   startGame: () =>
     set(() => ({
       game: { phase: "night", round: 1 },
@@ -44,7 +50,28 @@ export const useGameStore = create<State & Action>((set) => ({
       game: { ...state.game, phase: "night" },
     })),
 
+  addCard: (name: string) =>
+    set((state) => ({
+      cards: state.cards.map((card) =>
+        card.Name === name
+          ? { ...card, Number: (card.Number ?? 0) + 1 } // Increment by 1
+          : card
+      ),
+    })),
+
+  removeCard: (name: string) =>
+    set((state) => ({
+      cards: state.cards.map((card) =>
+        card.Name === name
+          ? { ...card, Number: Math.max((card.Number ?? 0) - 1, 0) } // Decrement but ensure it doesn’t go below 0
+          : card
+      ),
+    })),
   startDayPhase: () =>
+    set((state) => ({
+      game: { ...state.game, phase: "day" },
+    })),
+  addRole: () =>
     set((state) => ({
       game: { ...state.game, phase: "day" },
     })),

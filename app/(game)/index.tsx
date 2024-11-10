@@ -1,90 +1,67 @@
 import {
   ImageBackground,
-  KeyboardAvoidingView,
   StyleSheet,
-  View,
+  Text,
   TouchableOpacity,
-  ScrollView,
+  View,
 } from "react-native";
-import React, { useMemo } from "react";
-import theme, { customStyles } from "@/constants/DefaultStyles";
-import { useGameStore } from "@/stores/GameStore";
+import React from "react";
+import { customStyles } from "@/constants/DefaultStyles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import PlayerNameField from "./components/PlayerNameField";
 import { router } from "expo-router";
 
 const index = () => {
-  const { players, addNewPlayer } = useGameStore();
-  console.log(players);
-
-  const buttonIsActive = useMemo(() => {
-    return players.every((player) => player.Name); // returns true only if every player has a non-empty Name
-  }, [players]);
-
   return (
-    <KeyboardAvoidingView style={customStyles.container}>
+    <View style={customStyles.container}>
       <ImageBackground
         style={customStyles.imageBgContainer}
         source={require("@/assets/images/backgroundImage.jpg")}
       >
-        {buttonIsActive && (
-          <TouchableOpacity
-            style={[
-              customStyles.button,
-              customStyles.buttonSizeS,
-              styles.alignButtonRight,
-            ]}
-            onPress={() => router.push("/(game)/roles")}
-          >
-            <MaterialCommunityIcons
-              name="arrow-right"
-              size={30}
-              style={customStyles.ButtonIcon}
-            />
-          </TouchableOpacity>
-        )}
+        <Text style={customStyles.H1}>Avez-vous les cartes ?</Text>
 
-        <ScrollView contentContainerStyle={styles.inputView}>
-          {players.map((player) => {
-            return <PlayerNameField id={player.id} key={player.id} />;
-          })}
+        <View style={styles.buttonView}>
+          <TouchableOpacity
+            style={[customStyles.button, customStyles.buttonSizeL]}
+            onPress={() => {
+              router.push("/(game)/roles");
+            }}
+          >
+            <Text style={customStyles.buttonText}>Oui</Text>
+            <MaterialCommunityIcons
+              name="check"
+              style={customStyles.ButtonIcon}
+              size={30}
+            />
+          </TouchableOpacity>
           <TouchableOpacity
             style={[
               customStyles.button,
-              customStyles.buttonSizeS,
-              styles.alignButtonCenter,
+              customStyles.buttonSizeL,
+              customStyles.buttonInactive,
             ]}
-            onPress={() => addNewPlayer()}
+            onPress={() => {
+              // router.push("/(game)/");
+            }}
+            disabled={true}
           >
+            <Text style={customStyles.buttonText}>Non</Text>
             <MaterialCommunityIcons
-              name="plus"
-              size={30}
+              name="close"
               style={customStyles.ButtonIcon}
+              size={30}
             />
           </TouchableOpacity>
-        </ScrollView>
+        </View>
       </ImageBackground>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
 export default index;
 
 const styles = StyleSheet.create({
-  mainView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  inputView: {
-    gap: theme.spacing.sz9,
-    paddingBottom: theme.spacing.sz9,
-    paddingTop: theme.spacing.sz9,
-  },
-  alignButtonCenter: {
-    alignSelf: "center",
-  },
-  alignButtonRight: {
-    alignSelf: "flex-end",
+  buttonView: {
+    justifyContent: "space-evenly",
+    height: 300,
   },
 });

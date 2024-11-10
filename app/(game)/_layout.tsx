@@ -17,7 +17,7 @@ export default function TabLayout() {
       <Stack.Screen
         options={{
           headerShown: true,
-          headerTitle: "Joueurs",
+          headerTitle: "Menu",
         }}
         name="index"
       />
@@ -27,6 +27,13 @@ export default function TabLayout() {
           headerTitle: "Roles",
         }}
         name="roles/index"
+      />
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          headerTitle: "Roles",
+        }}
+        name="players/index"
       />
     </Stack>
   );

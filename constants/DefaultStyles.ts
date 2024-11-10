@@ -150,6 +150,10 @@ export const customStyles = StyleSheet.create({
     shadowRadius: theme.buttonShadow.shadowRadius,
     elevation: 6,
   },
+  buttonInactive: {
+    backgroundColor: theme.color.grey80, // Primary tint color
+    opacity: 0.5,
+  },
   buttonSizeL: {
     width: 300,
     height: 70,
@@ -170,6 +174,12 @@ export const customStyles = StyleSheet.create({
     minWidth: 150,
   },
   // Headers
+  title: {
+    textAlign: "center",
+    position: "absolute",
+    top: theme.spacing.sz4,
+    marginVertical: theme.spacing.sz9,
+  },
   H1: {
     fontFamily: theme.fontFamily.header,
     fontSize: theme.fontSize.xxl,
