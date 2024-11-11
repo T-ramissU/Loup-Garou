@@ -176,9 +176,7 @@ export const customStyles = StyleSheet.create({
   // Headers
   title: {
     textAlign: "center",
-    position: "absolute",
-    top: theme.spacing.sz4,
-    marginVertical: theme.spacing.sz9,
+    alignSelf: "flex-start",
   },
   H1: {
     fontFamily: theme.fontFamily.header,
