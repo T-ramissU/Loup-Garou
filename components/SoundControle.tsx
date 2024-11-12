@@ -10,13 +10,13 @@ import React, { useEffect, useState } from "react";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import theme, { customStyles } from "@/constants/DefaultStyles";
 import { Audio } from "expo-av";
+import { useAmbiantSound } from "@/hooks/useSound";
 
 const SoundControle = () => {
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const [ambiantSound, setAmbiantSound] = useState<boolean>(true);
   const [voiceSound, setVoiceSound] = useState<boolean>(true);
-
-  const [sound, setSound] = useState<Audio.Sound | undefined>(undefined);
+  const { toggleMute } = useAmbiantSound();
 
   const fadeAnim = useAnimatedValue(0);
   const slideDown = () => {
@@ -34,31 +34,6 @@ const SoundControle = () => {
     }).start();
   };
 
-  async function playSound() {
-    console.log("Loading Sound");
-    const { sound } = await Audio.Sound.createAsync(
-      require("@/assets/sound/ambiant/forest.mp3")
-    );
-    setSound(sound);
-    await sound.setIsMutedAsync(ambiantSound);
-    await sound.playAsync();
-  }
-
-  async function muteSound() {
-    const { sound } = await Audio.Sound.createAsync(
-      require("@/assets/sound/ambiant/forest.mp3")
-    );
-    setSound(sound);
-  }
-
-  useEffect(() => {
-    return sound
-      ? () => {
-          sound.unloadAsync();
-        }
-      : undefined;
-  }, [sound]);
-
   return (
     <View style={styles.mainView}>
       <TouchableOpacity
@@ -69,7 +44,6 @@ const SoundControle = () => {
           else {
             slideDown();
           }
-          playSound();
         }}
       >
         <Ionicons
@@ -95,6 +69,7 @@ const SoundControle = () => {
             !ambiantSound && customStyles.buttonInactive,
           ]}
           onPress={() => {
+            toggleMute(ambiantSound); // Call the mute function from the hook
             setAmbiantSound(!ambiantSound);
           }}
         >

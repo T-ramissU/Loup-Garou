@@ -12,6 +12,7 @@ import "react-native-reanimated";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { Button, StyleSheet, TouchableOpacity } from "react-native";
 import SoundControle from "@/components/SoundControle";
+import { useAmbiantSound } from "@/hooks/useSound";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
