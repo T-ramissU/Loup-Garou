@@ -36,6 +36,7 @@
     "react-native-screens": "3.31.1",
     "react-native-web": "~0.19.10",
     "zustand": "^5.0.1",
+    "expo-av": "~14.0.7",
     "expo-blur": "~13.0.2"
   },
   "devDependencies": {
