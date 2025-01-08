@@ -15,7 +15,6 @@ import PlayerNameField from "./components/PlayerNameField";
 
 const index = () => {
   const { players, addNewPlayer } = useGameStore();
-  console.log(players);
 
   const buttonIsActive = useMemo(() => {
     return players.every((player) => player.Name); // returns true only if every player has a non-empty Name

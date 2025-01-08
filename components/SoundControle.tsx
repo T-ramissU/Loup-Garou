@@ -13,7 +13,7 @@ import { Audio } from "expo-av";
 import { useAmbiantSound } from "@/hooks/useSound";
 
 const SoundControle = () => {
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(true);
   const [ambiantSound, setAmbiantSound] = useState<boolean>(true);
   const [voiceSound, setVoiceSound] = useState<boolean>(true);
   const { toggleMute } = useAmbiantSound();
@@ -34,16 +34,20 @@ const SoundControle = () => {
     }).start();
   };
 
+  const menuOpenPress = () => {
+    setMenuOpen(!menuOpen);
+    if (menuOpen) slideUp();
+    else {
+      slideDown();
+    }
+  };
+
   return (
     <View style={styles.mainView}>
       <TouchableOpacity
         style={[customStyles.button, styles.roundButton]}
         onPress={() => {
-          setMenuOpen(!menuOpen);
-          if (menuOpen) slideUp();
-          else {
-            slideDown();
-          }
+          menuOpenPress();
         }}
       >
         <Ionicons

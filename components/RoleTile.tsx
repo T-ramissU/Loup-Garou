@@ -26,7 +26,7 @@ const RoleTile = ({ roleData }: RoleTileProps) => {
       />
       <TouchableOpacity
         style={styles.roleButton}
-        onLongPress={() => {
+        onPress={() => {
           setIsopen(true);
         }}
       >
