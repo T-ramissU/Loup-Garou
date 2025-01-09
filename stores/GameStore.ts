@@ -25,7 +25,7 @@ type Action = {
   removeCard: (name: string) => void;
 };
 
-export const useGameStore = create<State & Action>((set) => ({
+export const useGameStore = create<State & Action>((set, get) => ({
   players: [
     { id: 1 } as Player,
     { id: 2 } as Player,
@@ -39,7 +39,7 @@ export const useGameStore = create<State & Action>((set) => ({
   winners: [],
   losers: [],
 
-  cards: allCards as Role[],
+  cards: [] as Role[],
   startGame: () =>
     set(() => ({
       game: { phase: "night", round: 1 },
@@ -50,28 +50,36 @@ export const useGameStore = create<State & Action>((set) => ({
       game: { ...state.game, phase: "night" },
     })),
 
-  addCard: (name: string) =>
-    set((state) => ({
-      cards: state.cards.map((card) =>
-        card.Name === name
-          ? { ...card, Number: (card.Number ?? 0) + 1 } // Increment by 1
-          : card
-      ),
-    })),
+  addCard: (name: string) => {
+    if (get().cards.find((card) => card.Name === name)) {
+      set((state) => ({
+        cards: state.cards.map((card) =>
+          card.Name === name
+            ? { ...card, Number: (card.Number ?? 0) + 1 }
+            : card
+        ),
+      }));
+    } else {
+      let cardToAdd = allCards.find((card) => card.Name === name);
+      cardToAdd!.Number = 1;
+      set((state) => ({
+        cards: [...state.cards, cardToAdd!],
+      }));
+    }
+  },
 
-  removeCard: (name: string) =>
+  removeCard: (name: string) => {
     set((state) => ({
-      cards: state.cards.map((card) =>
-        card.Name === name
-          ? { ...card, Number: Math.max((card.Number ?? 0) - 1, 0) } // Decrement but ensure it doesn’t go below 0
-          : card
-      ),
-    })),
+      cards: state.cards
+        .map((card) =>
+          card.Name === name
+            ? { ...card, Number: Math.max((card.Number ?? 0) - 1, 0) }
+            : card
+        )
+        .filter((card) => card.Number !== 0),
+    }));
+  },
   startDayPhase: () =>
-    set((state) => ({
-      game: { ...state.game, phase: "day" },
-    })),
-  addRole: () =>
     set((state) => ({
       game: { ...state.game, phase: "day" },
     })),
@@ -83,9 +91,7 @@ export const useGameStore = create<State & Action>((set) => ({
 
   removePlayer: (id) =>
     set((state) => ({
-      players: state.players.filter((player) => {
-        player.id != id;
-      }),
+      players: state.players.filter((player) => player.id !== id),
     })),
 
   setPlayerName: (id, name) =>
@@ -108,13 +114,13 @@ export const useGameStore = create<State & Action>((set) => ({
   killPlayer: (id) =>
     set((state) => ({
       players: state.players.map((player) =>
-        player.id === id ? { ...player, IsAive: false } : player
+        player.id === id ? { ...player, IsAlive: false } : player
       ),
     })),
   revivePlayer: (id) =>
     set((state) => ({
       players: state.players.map((player) =>
-        player.id === id ? { ...player, IsAive: true } : player
+        player.id === id ? { ...player, IsAlive: true } : player
       ),
     })),
 }));

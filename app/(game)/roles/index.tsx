@@ -1,38 +1,44 @@
-import {
-  View,
-  Text,
-  ImageBackground,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
-import React from "react";
-import { customStyles } from "@/constants/DefaultStyles";
-import GridTile from "./components/GridTile";
-import allCard from "@/assets/cards/origin.json";
-import { Role } from "@/interfaces/RoleInterface";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import React, { useMemo } from "react";
+import theme, { customStyles } from "@/constants/DefaultStyles";
+
 import GridView from "./views/GridView";
+import { useGameStore } from "@/stores/GameStore";
+import { router } from "expo-router";
+import BackgroundView from "@/components/BackgroundView";
 
 const index = () => {
-  const allRoles: Role[] = allCard;
+  const { cards } = useGameStore();
+
+  const isButtonActive = useMemo(() => {
+    const validCardsCount = cards.reduce((acc, card) => {
+      return acc + (card.Number ?? 0); // Safely handle undefined or null values
+    }, 0);
+    return validCardsCount >= 3; // Returns true if valid cards are more than 3
+  }, [cards]);
+
   return (
-    <View style={customStyles.container}>
-      <ImageBackground
-        style={customStyles.imageBgContainer}
-        source={require("@/assets/images/backgroundImage.jpg")}
-      >
-        <View style={styles.mainView}>
-          <Text style={[customStyles.H1, customStyles.title]}>
-            Selectonnez les cartes avec les quelles vous jouez
-          </Text>
-          <GridView />
-          <TouchableOpacity
-            style={[customStyles.button, customStyles.buttonSizeL]}
-          >
-            <Text style={customStyles.buttonText}>Lancer la partie</Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
-    </View>
+    <BackgroundView>
+      <View style={styles.mainView}>
+        <Text style={[customStyles.H1, customStyles.title]}>
+          Selectonnez les cartes avec les quelles vous jouez
+        </Text>
+        <GridView />
+        <TouchableOpacity
+          disabled={!isButtonActive}
+          style={[
+            customStyles.button,
+            customStyles.buttonSizeL,
+            !isButtonActive && styles.inactiveButton,
+          ]}
+          onPress={() => {
+            router.push("/(game)/validation");
+          }}
+        >
+          <Text style={customStyles.buttonText}>Lancer la partie</Text>
+        </TouchableOpacity>
+      </View>
+    </BackgroundView>
   );
 };
 
@@ -43,5 +49,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     flex: 1,
     alignItems: "center",
+  },
+  inactiveButton: {
+    backgroundColor: theme.color.grey100,
   },
 });

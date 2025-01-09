@@ -35,6 +35,20 @@ export default function TabLayout() {
         }}
         name="players/index"
       />
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          headerTitle: "Validation",
+        }}
+        name="validation/index"
+      />
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          headerTitle: "Rounds",
+        }}
+        name="rounds/index"
+      />
     </Stack>
   );
 }

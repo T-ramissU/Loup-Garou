@@ -3,7 +3,7 @@ import { Role } from "./RoleInterface";
 export interface Player {
   Name: string;
   Role: Role;
-  IsAive: boolean;
+  IsAlive: boolean;
   HasPlayed: boolean;
   id: number;
   Couple?: number;

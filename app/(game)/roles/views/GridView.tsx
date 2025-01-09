@@ -8,7 +8,6 @@ import { useGameStore } from "@/stores/GameStore";
 
 const GridView = () => {
   const allRoles: Role[] = allCard;
-  const { cards } = useGameStore();
   return (
     <View style={styles.mainColumnView}>
       {allRoles.map((role) => (
