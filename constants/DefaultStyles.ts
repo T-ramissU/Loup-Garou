@@ -246,7 +246,7 @@ export const customStyles = StyleSheet.create({
     color: theme.color.grey80, // Medium grey for placeholder text
   },
   shadowBox: {
-    shadowColor: theme.color.darkblur,
+    shadowColor: theme.color.white,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 3,

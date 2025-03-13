@@ -15,4 +15,7 @@ export interface Role {
   Side: string;
   Number: number;
   Priority: number;
+  Narration?: string;
+  Action?: string;
+  Remember?: string;
 }

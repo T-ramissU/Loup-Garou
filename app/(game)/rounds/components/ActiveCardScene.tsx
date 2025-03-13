@@ -8,6 +8,7 @@ import { ImageBackground } from 'expo-image';
 import { Image } from "expo-image";
 import { imageMap } from '@/constants/CardImages';
 import { Ionicons } from '@expo/vector-icons';
+import { BlurView } from 'expo-blur';
 
 
 
@@ -15,42 +16,51 @@ type ActiveCardSceneProps = {
     role: Role
 }
 const ActiveCardScene = () => {
-    const role: Role = allCards.find((card) => card.Name === "Voyante")!;
+    const role: Role = allCards.find((card) => card.Name === "Sorcière")!;
 
     return (
-        <View
-            style={[customStyles.shadowBox, styles.mainView]}
-        >
+        <BlurView intensity={100} tint='dark' style={[customStyles.container, StyleSheet.absoluteFill]}>
+            <View
+                style={[customStyles.shadowBox, styles.mainView]}
+            >
 
-            <View style={styles.imageTitleView}>
-                <Image
-                    contentFit="cover"
-                    source={imageMap[role.Image as keyof typeof imageMap]}
-                    style={styles.image}
-                ></Image>
-                <Text style={[customStyles.H2]}>{role.Name}</Text>
+                <View style={styles.imageTitleView}>
+                    <Image
+                        contentFit="contain"
+                        source={imageMap[role.Image as keyof typeof imageMap]}
+                        style={styles.image}
+                    ></Image>
+                    <Text style={[customStyles.H1]}>{role.Name}</Text>
 
-            </View>
+                </View>
 
-            <View style={styles.descriptionView}>
+                {/* <View style={styles.descriptionView}>
                 <View style={styles.segmentView}>
                     <Text style={customStyles.H2}>Pouvoir :</Text>
                     <Text style={customStyles.P1}>{role.Description}</Text>
                 </View>
-            </View>
-            <View style={styles.narratorView}>
-                <Text style={customStyles.H2}>Narrateur :</Text>
-                <View style={styles.speakerView}>
-                    <Ionicons name="mic" size={24} color="black" />
-                    <Text style={customStyles.P1}>C'est à vous de jouer !</Text>
+            </View> */}
+                <View style={styles.narratorView}>
+                    <Text style={customStyles.H2}>Narrateur :</Text>
+                    <View style={styles.speakerView}>
+                        <Ionicons name="mic-outline" size={24} color={theme.color.prim20} />
+                        <Text style={customStyles.P1}>{role.Narration}</Text>
+                    </View>
+                    <View style={styles.speakerView}>
+                        <Ionicons name="footsteps-outline" size={24} color={theme.color.prim20} />
+                        <Text style={customStyles.P1}>{role.Action}</Text>
 
+                    </View>
+                    {/* Only show if role has a Remember */}
+                    {role.Remember && <View style={styles.speakerView}>
+                        <Ionicons name="eye-outline" size={24} color={theme.color.prim20} />
+                        <Text style={customStyles.P1}>{role.Remember}</Text>
+
+                    </View>
+                    }
                 </View>
             </View>
-
-
-
-
-        </View>
+        </BlurView>
     )
 }
 
@@ -60,7 +70,7 @@ const styles = StyleSheet.create({
 
     mainView: {
         borderRadius: 20,
-        height: "80%",
+        maxHeight: "80%",
         width: "80%",
         alignSelf: "center",
         padding: 20,
@@ -68,13 +78,16 @@ const styles = StyleSheet.create({
     },
     imageTitleView: {
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "flex-start",
         alignItems: "center",
-        marginBottom: 20
+        marginBottom: 20,
+        gap: 40,
+
     },
     image: {
-        width: 100,
-        height: 100,
+        width: 50,
+        height: 50,
+        borderRadius: 60,
     },
     descriptionView: {
         gap: 10,
@@ -89,7 +102,8 @@ const styles = StyleSheet.create({
     speakerView: {
         flexDirection: "row",
         alignItems: "center",
-        gap: 5
+        gap: 15,
+        padding: 10,
     }
 
 

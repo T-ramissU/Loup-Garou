@@ -14,8 +14,9 @@
     "Description": "Cupidon a le pouvoir de désigner deux amoureux au début de la partie. Si l'un des amoureux meurt, l'autre se suicidera de chagrin.",
     "Side": "V",
     "Victory": "Les Villageois gagnent si tous les Loups-garous sont éliminés, sauf si Cupidon est amoureux d'un Loup-garou, dans ce cas, ils gagnent ensemble.",
-    "Narrator": "Cupidon se réveille... \n Cupidon, veuillez indiquer les deux joueurs que vous souhaitez rendre amoureux.",
+    "Narration": "Cupidon se réveille... \nCupidon, veuillez indiquer les deux joueurs que vous souhaitez rendre amoureux.",
     "Action": "Vous devez tapez sur les deux joeurs qui ont été désignés par Cupidon afin de les reveiller et leur montrer qu'ils sont amoureux.",
+    "Remember": "Souvenez-vous que si l'un des amoureux meurt, l'autre meurs de chagrin. Donc gardez en tête les choix de Cupidon.",
     "Priority": 10,
     "Number": 0
   },
@@ -25,7 +26,7 @@
     "Description": "Les Loups-garous se réveillent chaque nuit pour dévorer un joueur. Leur but est de tuer tous les Villageois.",
     "Side": "L",
     "Victory": "Les Loups-garous gagnent si le nombre de Loups-garous est égal ou supérieur au nombre de Villageois.",
-    "Narrator": "Les Loups-garous se réveillent... \n Les Loups-garous, veuillez indiquer le joueur que vous souhaitez éliminer.",
+    "Narration": "Les Loups-garous se réveillent... \nLes Loups-garous, veuillez indiquer le joueur que vous souhaitez éliminer.",
     "Priority": 9,
     "Number": 0
   },
@@ -44,8 +45,9 @@
     "Description": "La Sorcière possède deux potions : une pour sauver la victime des Loups-garous et une pour tuer un joueur de son choix. Chaque potion ne peut être utilisée qu'une seule fois.",
     "Side": "V",
     "Victory": "Les Villageois gagnent si tous les Loups-garous sont éliminés.",
-    "Narrator": "La Sorcière se réveille... \n La Sorcière, veuillez indiquer si vous souhaitez sauver la victime ou tuer un joueur.",
+    "Narration": "La Sorcière se réveille... \nLa Sorcière, veuillez indiquer si vous souhaitez sauver la victime ou tuer un joueur.",
     "Action":"Vous devez désigner la victime des Loups-garous à la sorcière.",
+    "Remember":"Souvenez-vous que la Sorcière ne peut utiliser chaque potion qu'une seule fois. Donc gardez en tête les choix de la Sorcière.",
     "Priority": 8,
     "Number": 0
   },
@@ -64,7 +66,7 @@
     "Description": "Le Voleur peut choisir d'échanger sa carte avec celle d'un autre joueur. Il devient alors le rôle de la carte qu'il a volée.",
     "Side": "V",
     "Victory": "Selon le rôle qu'il choisit, le Voleur gagne avec l'équipe des Villageois ou celle des Loups-garous.",
-    "Narrator": "Le Voleur se réveille... \n Le Voleur, veuillez indiquer si vous souhaitez échanger votre carte avec celle d'un autre joueur.",
+    "Narration": "Le Voleur se réveille... \nLe Voleur, veuillez indiquer si vous souhaitez échanger votre carte avec celle d'un autre joueur.",
     "Action": "Si le voleur désigne un joueur, echangez la carte du Voleur avec celle du joueur désigné.",
     "Priority": 1,
     "Number": 0
@@ -75,7 +77,7 @@
     "Description": "La Voyante peut, chaque nuit, regarder la carte d'un joueur pour essayer de découvrir les Loups-garous.",
     "Side": "V",
     "Victory": "Les Villageois gagnent si tous les Loups-garous sont éliminés.",
-    "Narrator": "La Voyante se réveille... \n La Voyante, veuillez indiquer le joueur dont vous souhaitez voir la carte.",
+    "Narration": "La Voyante se réveille... \nLa Voyante, veuillez indiquer le joueur dont vous souhaitez voir la carte.",
     "Action": "Montrez la carte du joueur désigné à la Voyante.",
     "Priority": 8,
     "Number": 0
