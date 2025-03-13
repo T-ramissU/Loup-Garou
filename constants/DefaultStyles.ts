@@ -245,4 +245,11 @@ export const customStyles = StyleSheet.create({
   inputPlaceholder: {
     color: theme.color.grey80, // Medium grey for placeholder text
   },
+  shadowBox: {
+    shadowColor: theme.color.darkblur,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 6,
+  },
 });

@@ -8,7 +8,7 @@ import { router } from "expo-router";
 import BackgroundView from "@/components/BackgroundView";
 
 const index = () => {
-  const { cards } = useGameStore();
+  const { cards, startGame } = useGameStore();
 
   const isButtonActive = useMemo(() => {
     const validCardsCount = cards.reduce((acc, card) => {
@@ -32,6 +32,7 @@ const index = () => {
             !isButtonActive && styles.inactiveButton,
           ]}
           onPress={() => {
+            startGame();
             router.push("/(game)/validation");
           }}
         >

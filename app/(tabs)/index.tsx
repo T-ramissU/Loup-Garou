@@ -23,7 +23,7 @@ const index = () => {
           <TouchableOpacity
             style={[customStyles.button, customStyles.buttonSizeL]}
             onPress={() => {
-              router.push("/(game)/");
+              router.push("/(game)");
             }}
           >
             <Text style={customStyles.buttonText}>Jouer</Text>
