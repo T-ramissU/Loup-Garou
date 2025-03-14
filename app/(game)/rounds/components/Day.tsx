@@ -1,11 +1,14 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Modal, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 const Day = () => {
     return (
-        <View>
-            <Text>Day</Text>
-        </View>
+        <Modal visible={true} animationType="fade" transparent={false}>
+
+            <View>
+                <Text>YAYOOOOOOOOOOOOOOOOOOOOOOOOo</Text>
+            </View>
+        </Modal>
     )
 }
 

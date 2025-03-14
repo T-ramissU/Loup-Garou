@@ -1,5 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
 import { Role } from '@/interfaces/RoleInterface'
 
 import allCards from "@/assets/cards/origin.json";
@@ -9,57 +9,61 @@ import { Image } from "expo-image";
 import { imageMap } from '@/constants/CardImages';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
+import CardInfoModal from '../../components/CardInfoModal';
 
 
 
 type ActiveCardSceneProps = {
     role: Role
 }
-const ActiveCardScene = () => {
-    const role: Role = allCards.find((card) => card.Name === "Sorcière")!;
+const ActiveCardScene = ({ role }: ActiveCardSceneProps) => {
 
+    const [visible, setVisible] = useState(false);
+
+    const onClose = () => {
+        setVisible(false)
+    }
     return (
         <BlurView intensity={100} tint='dark' style={[customStyles.container, StyleSheet.absoluteFill]}>
             <View
                 style={[customStyles.shadowBox, styles.mainView]}
             >
-
                 <View style={styles.imageTitleView}>
-                    <Image
-                        contentFit="contain"
-                        source={imageMap[role.Image as keyof typeof imageMap]}
-                        style={styles.image}
-                    ></Image>
+                    <TouchableOpacity
+                        onPress={() => setVisible(true)}
+                    >
+                        <Ionicons name="search-outline" size={30} color={theme.color.warn100} style={styles.searchIcon} />
+                        <Image
+                            contentFit="fill"
+                            source={imageMap[role.Image as keyof typeof imageMap]}
+                            style={styles.image}
+
+                        ></Image>
+                    </TouchableOpacity>
                     <Text style={[customStyles.H1]}>{role.Name}</Text>
 
                 </View>
-
-                {/* <View style={styles.descriptionView}>
-                <View style={styles.segmentView}>
-                    <Text style={customStyles.H2}>Pouvoir :</Text>
-                    <Text style={customStyles.P1}>{role.Description}</Text>
-                </View>
-            </View> */}
                 <View style={styles.narratorView}>
                     <Text style={customStyles.H2}>Narrateur :</Text>
                     <View style={styles.speakerView}>
                         <Ionicons name="mic-outline" size={24} color={theme.color.prim20} />
-                        <Text style={customStyles.P1}>{role.Narration}</Text>
+                        <Text style={[customStyles.P1, styles.text]}>{role.Narration}</Text>
                     </View>
                     <View style={styles.speakerView}>
                         <Ionicons name="footsteps-outline" size={24} color={theme.color.prim20} />
-                        <Text style={customStyles.P1}>{role.Action}</Text>
+                        <Text style={[customStyles.P1, styles.text]}>{role.Action}</Text>
 
                     </View>
                     {/* Only show if role has a Remember */}
                     {role.Remember && <View style={styles.speakerView}>
                         <Ionicons name="eye-outline" size={24} color={theme.color.prim20} />
-                        <Text style={customStyles.P1}>{role.Remember}</Text>
+                        <Text style={[customStyles.P1, styles.text]}>{role.Remember}</Text>
 
                     </View>
                     }
                 </View>
             </View>
+            <CardInfoModal visible={visible} onClose={onClose} item={role}></CardInfoModal>
         </BlurView>
     )
 }
@@ -70,7 +74,7 @@ const styles = StyleSheet.create({
 
     mainView: {
         borderRadius: 20,
-        maxHeight: "80%",
+        maxHeight: "65%",
         width: "80%",
         alignSelf: "center",
         padding: 20,
@@ -88,6 +92,8 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         borderRadius: 60,
+        opacity: 0.4,
+
     },
     descriptionView: {
         gap: 10,
@@ -102,9 +108,20 @@ const styles = StyleSheet.create({
     speakerView: {
         flexDirection: "row",
         alignItems: "center",
-        gap: 15,
+        gap: 20,
         padding: 10,
+
+    },
+    searchIcon: {
+        position: "absolute",
+        zIndex: 1,
+        top: 10,
+        left: 10,
+    },
+    text: {
+        width: "80%",
     }
+
 
 
 })

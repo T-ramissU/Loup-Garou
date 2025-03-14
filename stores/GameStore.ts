@@ -7,7 +7,7 @@ type State = {
     phase: "setup" | "night" | "day" | "voting" | "gameOver";
     round: number;
   };
-  currentCard: {card:Role,index:number} | null;
+  currentCard: {card:Role,index:number};
   cards: Role[];
 };
 
@@ -26,14 +26,14 @@ export const useGameStore = create<State & Action>((set, get) => ({
     phase: "setup",
     round: 0,
   },
-  currentCard: null,
+  currentCard: {card:{} as Role,index:0},
   winners: [],
   losers: [],
   cards: [] as Role[],
   startGame: () =>
     set((state) => ({
       game: { phase: "night", round: 1 },
-      cards: state.cards.sort((a, b) => a.Priority - b.Priority),
+      cards: state.cards.sort((a, b) => b.Priority - a.Priority),
       currentCard:{card:state.cards[0],index:0}
     })),
 
@@ -80,8 +80,13 @@ export const useGameStore = create<State & Action>((set, get) => ({
     currentCard:{card,index}
   })),
   updateCurrentCard: () => {
+    if(get().cards[get().currentCard.index + 1].Priority == 0){
+      set((state)=>({
+        game: { ...state.game, phase: "day" }
+      }))
+    }
     set((state)=>({
-      currentCard:{card:state.cards[state.currentCard?.index? +1 : 0],index:state.currentCard?.index? +1 : 0}
+      currentCard: { card: get().cards[state.currentCard.index + 1]||get().cards[0], index: state.currentCard.index + 1== get().cards.length?0:state.currentCard.index + 1 }
     }))
   },
 
