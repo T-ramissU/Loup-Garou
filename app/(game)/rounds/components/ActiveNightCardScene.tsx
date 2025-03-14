@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import { Role } from '@/interfaces/RoleInterface'
 
@@ -10,13 +10,14 @@ import { imageMap } from '@/constants/CardImages';
 import { Ionicons } from '@expo/vector-icons';
 import { BlurView } from 'expo-blur';
 import CardInfoModal from '../../components/CardInfoModal';
+import Animated from 'react-native-reanimated';
 
 
 
-type ActiveCardSceneProps = {
+type ActiveNightCardSceneProps = {
     role: Role
 }
-const ActiveCardScene = ({ role }: ActiveCardSceneProps) => {
+const ActiveNightCardScene = ({ role }: ActiveNightCardSceneProps) => {
 
     const [visible, setVisible] = useState(false);
 
@@ -24,9 +25,10 @@ const ActiveCardScene = ({ role }: ActiveCardSceneProps) => {
         setVisible(false)
     }
     return (
-        <BlurView intensity={100} tint='dark' style={[customStyles.container, StyleSheet.absoluteFill]}>
-            <View
-                style={[customStyles.shadowBox, styles.mainView]}
+        <BlurView intensity={80} tint='dark' style={[customStyles.container, StyleSheet.absoluteFill]} >
+            <Animated.View
+
+                style={[styles.mainView]}
             >
                 <View style={styles.imageTitleView}>
                     <TouchableOpacity
@@ -49,11 +51,15 @@ const ActiveCardScene = ({ role }: ActiveCardSceneProps) => {
                         <Ionicons name="mic-outline" size={24} color={theme.color.prim20} />
                         <Text style={[customStyles.P1, styles.text]}>{role.Narration}</Text>
                     </View>
-                    <View style={styles.speakerView}>
-                        <Ionicons name="footsteps-outline" size={24} color={theme.color.prim20} />
-                        <Text style={[customStyles.P1, styles.text]}>{role.Action}</Text>
+                    {/* Only show if role as a Action */}
+                    {
+                        role.Action &&
+                        <View style={styles.speakerView}>
+                            <Ionicons name="footsteps-outline" size={24} color={theme.color.prim20} />
+                            <Text style={[customStyles.P1, styles.text]}>{role.Action}</Text>
 
-                    </View>
+                        </View>
+                    }
                     {/* Only show if role has a Remember */}
                     {role.Remember && <View style={styles.speakerView}>
                         <Ionicons name="eye-outline" size={24} color={theme.color.prim20} />
@@ -62,13 +68,14 @@ const ActiveCardScene = ({ role }: ActiveCardSceneProps) => {
                     </View>
                     }
                 </View>
-            </View>
+            </Animated.View>
             <CardInfoModal visible={visible} onClose={onClose} item={role}></CardInfoModal>
         </BlurView>
+
     )
 }
 
-export default ActiveCardScene
+export default ActiveNightCardScene
 
 const styles = StyleSheet.create({
 
@@ -78,7 +85,8 @@ const styles = StyleSheet.create({
         width: "80%",
         alignSelf: "center",
         padding: 20,
-        backgroundColor: theme.color.dark80,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+        zIndex: 0,
     },
     imageTitleView: {
         flexDirection: "row",

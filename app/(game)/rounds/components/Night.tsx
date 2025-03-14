@@ -1,10 +1,10 @@
 import { Modal, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { useGameStore } from '@/stores/GameStore'
-import ActiveCardScene from './ActiveCardScene'
 import theme, { } from '@/constants/DefaultStyles'
 import BackgroundView from '@/components/BackgroundView'
 import { Image } from "expo-image";
+import ActiveNightCardScene from './ActiveNightCardScene'
 
 const Night = () => {
     const { currentCard, updateCurrentCard } = useGameStore();
@@ -24,7 +24,7 @@ const Night = () => {
                     }}>
 
                 </Image>
-                <ActiveCardScene role={currentCard!.card}></ActiveCardScene>
+                <ActiveNightCardScene role={currentCard!.card}></ActiveNightCardScene>
 
                 <TouchableOpacity
                     style={styles.button}
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         backgroundColor: theme.color.warn100,
         padding: 10,
         borderRadius: 10,
-        zIndex: 1,
+        zIndex: 3,
     },
     buttonText: {
         color: 'white',
