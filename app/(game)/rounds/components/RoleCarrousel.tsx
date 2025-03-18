@@ -19,8 +19,10 @@ const RoleCarrousel = ({ roles, onCardSelect }: RoleCarrouselProps) => {
     const selectCard = (card: Role) => {
         if (selectedCards.includes(card)) {
             setSelectedCards(selectedCards.filter((c) => c !== card))
+            onCardSelect(card)
         } else {
             setSelectedCards([...selectedCards, card])
+            onCardSelect(card)
         }
     }
 

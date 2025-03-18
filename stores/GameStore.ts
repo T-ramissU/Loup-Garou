@@ -19,6 +19,8 @@ type Action = {
   startNightPhase: () => void;
   setCurrentCard: (card: Role, index: number) => void;
   updateCurrentCard: () => void;
+  resetCurrentCard: () => void;
+
 };
 
 export const useGameStore = create<State & Action>((set, get) => ({
@@ -88,6 +90,33 @@ export const useGameStore = create<State & Action>((set, get) => ({
     set((state)=>({
       currentCard: { card: get().cards[state.currentCard.index + 1]||get().cards[0], index: state.currentCard.index + 1== get().cards.length?0:state.currentCard.index + 1 }
     }))
+  },
+  resetCurrentCard: () => {
+    set((state)=>({
+      currentCard: { card: get().cards[0], index: 0 }
+    }))
+  },
+  checkWerewolvesWin: () => {
+    let werewolves = get().cards.filter((card) => card.Side === "Loup-garou");
+    let villagers = get().cards.filter((card) => card.Side === "Villageois");
+    if (werewolves.length >= villagers.length) {
+      set((state) => ({
+        game: { ...state.game, phase: "gameOver" },
+        winners: werewolves,
+        losers: villagers,
+      }));
+    }
+  },
+  checkVillagersWin: () => {
+    let werewolves = get().cards.filter((card) => card.Side === "Loup-garou");
+    let villagers = get().cards.filter((card) => card.Side === "Villageois");
+    if (werewolves.length === 0) {
+      set((state) => ({
+        game: { ...state.game, phase: "gameOver" },
+        winners: villagers,
+        losers: werewolves,
+      }));
+    }
   },
 
 }));

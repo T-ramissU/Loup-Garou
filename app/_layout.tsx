@@ -6,9 +6,9 @@ import {
 import { useFonts } from "expo-font";
 import { router, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "react-native-reanimated";
-
+import { Asset } from "expo-asset";
 import { useColorScheme } from "@/hooks/useColorScheme";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -24,6 +24,24 @@ export default function RootLayout() {
     Cinzel: require("../assets/fonts/Cinzel-VariableFont_wght.ttf"), // Adjust path as needed
     IMFellDWPica: require("../assets/fonts/IMFellDWPica-Regular.ttf"), // Adjust path as needed
   });
+
+  const [imagesLoaded, setImagesLoaded] = useState<boolean>(false);
+
+  // Preload images using expo-asset.
+  useEffect(() => {
+    async function loadAssets() {
+      await Asset.loadAsync([
+        require("../assets/images/backgroundImage.jpg"),
+        require("../assets/images/dark_forest_bg.png"),
+        require("../assets/images/village_bg1.png"),
+
+        // Add more images here if needed
+      ]);
+      setImagesLoaded(true);
+    }
+    loadAssets();
+  }, []);
+
 
   useEffect(() => {
     if (loaded) {

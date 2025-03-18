@@ -1,19 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { } from 'react'
-
+import React, { useState } from 'react'
 import theme, { customStyles } from '@/constants/DefaultStyles';
 import { Ionicons } from '@expo/vector-icons';
-import RoleCarrousel from './RoleCarrousel';
 import { Role } from '@/interfaces/RoleInterface';
+import RoleCarrousel from './RoleCarrousel';
 
 
-type DayDiscussionSceneProps = {
+
+type DayHunterActiveProps = {
     roles: Role[]
     onCardSelect: (card: Role) => void
 }
 
+const DayHunterActive = ({ roles, onCardSelect }: DayHunterActiveProps) => {
 
-const DayDiscussionScene = ({ roles, onCardSelect }: DayDiscussionSceneProps) => {
 
     return (
         <View
@@ -23,33 +23,21 @@ const DayDiscussionScene = ({ roles, onCardSelect }: DayDiscussionSceneProps) =>
                 <Text style={customStyles.H2}>Narrateur :</Text>
                 <View style={styles.speakerView}>
                     <Ionicons name="information-circle" size={24} color={theme.color.prim20} />
-                    <Text style={[customStyles.P1, styles.text]}>{"Annoncez les victimes au village si il y en a en gardant en tête:\n" +
-                        "- le vote des loups\n- les actions de la sorcière \n- le possible couple"}</Text>
+                    <Text style={[customStyles.P1, styles.text]}>Le chasseur à été éliminé. Il peut donc désigner un joueur qu'il souhaite tuer pour se vanger.</Text>
                 </View>
                 <View style={styles.speakerView}>
-                    <Ionicons name="information-circle" size={24} color={theme.color.prim20} />
-                    <Text style={[customStyles.P1, styles.text]}>{"Ceux qui ont été éliminé doivent montrer leurs roles aux autres joeurs"}</Text>
+                    <Ionicons name="mic-outline" size={24} color={theme.color.prim20} />
+                    <Text style={[customStyles.P1, styles.text]}>Le chasseur désigne un joeur à tuer.</Text>
                 </View>
-                <View style={styles.speakerView}>
-                    <Ionicons name="information-circle" size={24} color={theme.color.prim20} />
-                    <Text style={[customStyles.P1, styles.text]}>{"Les joeurs doivent maintenant discuter pour essayer de trouver les loups garous"}</Text>
-                </View>
-                <View style={styles.speakerView}>
-                    <Ionicons name="information-circle" size={24} color={theme.color.prim20} />
-                    <Text style={[customStyles.P1, styles.text]}>{"Selectionez le role de ceux qui ont été éliminé durant la nuit"}</Text>
-                </View>
+
                 <RoleCarrousel roles={roles} onCardSelect={onCardSelect}></RoleCarrousel>
 
-                <View style={styles.speakerView}>
-                    <Ionicons name="information-circle" size={24} color={theme.color.prim20} />
-                    <Text style={[customStyles.P1, styles.text]}>Après un certain temps ou quand le village se décide passez au vote.</Text>
-                </View>
             </View>
         </View>
     )
 }
 
-export default DayDiscussionScene
+export default DayHunterActive
 
 const styles = StyleSheet.create({
 

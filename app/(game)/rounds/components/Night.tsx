@@ -1,4 +1,4 @@
-import { Modal, StyleSheet, Text, Touchable, TouchableOpacity, View } from 'react-native'
+import { Modal, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useGameStore } from '@/stores/GameStore'
 import theme, { } from '@/constants/DefaultStyles'
@@ -8,6 +8,8 @@ import ActiveNightCardScene from './ActiveNightCardScene'
 
 const Night = () => {
     const { currentCard, updateCurrentCard } = useGameStore();
+
+
 
     return (
         <Modal visible={true} animationType="fade" transparent={false}>
